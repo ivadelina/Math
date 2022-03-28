@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable linebreak-style */
-// eslint-disable-next-line max-classes-per-file
+/* eslint-disable max-classes-per-file */
 export default class Character {
   constructor(name) {
     this.name = name;
@@ -14,16 +14,12 @@ export class MathChar extends Character {
   }
 
   get attack() {
+    let calcAttack = Math.floor(this._attack * (1.1 - this.distance / 10));
     if (this._stoned === true) {
-      this._attack = Math.floor(this._attack * (1.1 - this.distance / 10));
-      this._attack = Math.floor(this._attack - Math.log2(this.distance) * 5);
-      if (this._attack > 0) {
-        return this._attack;
-      } return 0;
+      calcAttack = Math.floor(calcAttack - Math.log2(this.distance) * 5);
     }
-    this._attack = Math.floor(this._attack * (1.1 - this.distance / 10));
-    if (this._attack > 0) {
-      return this._attack;
+    if (calcAttack > 0) {
+      return Math.max(calcAttack);
     } return 0;
   }
 

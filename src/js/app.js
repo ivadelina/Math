@@ -18,9 +18,7 @@ export class MathChar extends Character {
     if (this._stoned === true) {
       calcAttack = Math.floor(calcAttack - Math.log2(this.distance) * 5);
     }
-    if (calcAttack > 0) {
-      return Math.max(calcAttack);
-    } return 0;
+    return Math.max(calcAttack, 0);
   }
 
   set attack(value) {
